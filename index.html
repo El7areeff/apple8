@@ -5,13 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Apple of Fortune</title>
   <style>
-    /* تنسيق عام للصفحة */
     body {
       font-family: Arial, sans-serif;
       text-align: center;
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #1e3c72, #1e3c72); /* خلفية متدرجة زرقاء */
+      background: linear-gradient(135deg, #1a1a1a, #333);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -21,230 +20,112 @@
     }
 
     h1 {
-      font-size: 1.5rem; /* تصغير حجم العنوان */
-      margin: 5px 0;
-      text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc; /* تأثير إضاءة للنص */
-    }
-
-    .promo {
-      background-color: rgba(255, 255, 255, 0.1); /* خلفية شبه شفافة */
-      color: white;
-      font-size: 1rem; /* تصغير حجم الخط */
-      font-weight: bold;
-      padding: 10px 10px; /* تقليل الحشو */
-      margin-bottom: 10px;
-      border-radius: 10px;
-      backdrop-filter: blur(10px); /* تأثير ضبابي */
-      box-shadow: 0 0 20px rgba(0, 255, 204, 0.5); /* ظل ملون */
+      font-size: 2rem;
+      text-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc;
     }
 
     .container {
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 3px; /* تقليل المسافة بين العناصر */
-      margin: 3px auto;
-    }
-
-    .labels {
-      display: flex;
       flex-direction: column;
-      justify-content: center;
-      gap: 10px; /* تقليل المسافة بين العناصر */
-    }
-
-    .label {
-      background-color: rgba(255, 255, 255, 0.1);
-      color: white;
-      font-size: 1rem; /* تصغير حجم الخط */
-      font-weight: bold;
-      text-align: center;
-      line-height: 60px; /* تصغير ارتفاع الخلية */
-      height: 53px; /* تصغير ارتفاع الخلية */
-      width: 40px; /* تصغير عرض الخلية */
-      border-radius: 10px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .label:hover {
-      transform: scale(1.1); /* تكبير عند التحويم */
-      box-shadow: 0 0 25px rgba(0, 255, 204, 0.8);
+      align-items: center;
+      gap: 10px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr); /* 5 أعمدة */
-      gap: 2px; /* تقليل المسافة بين الخلايا */
+      grid-template-columns: repeat(5, 1fr);
+      gap: 5px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
     }
 
     .cell {
-      background-color: rgba(255, 255, 255, 0.1);
-      color: white;
-      font-size: 1.5rem; /* تصغير حجم الرموز */
-      font-weight: bold;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 2rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 60px; /* تصغير ارتفاع الخلية */
-      width: 60px; /* تصغير عرض الخلية */
-      border-radius: 10px;
+      width: 70px;
+      height: 70px;
+      border-radius: 15px;
       cursor: pointer;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
-      transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    }
-
-    .cell:hover {
-      background-color: rgba(0, 255, 204, 0.2);
-      transform: scale(1.1); /* تكبير عند التحويم */
-      box-shadow: 0 0 25px rgba(0, 255, 204, 0.8);
-    }
-
-    .cell:active {
-      transform: scale(0.95); /* تصغير عند النقر */
-    }
-
-    /* تأثيرات التفاحة 🍎 وعلامة الحظر 🚫 */
-    .cell.apple {
-      animation: glowApple 1.5s infinite alternate; /* إضاءة للتفاحة */
-    }
-
-    .cell.ban {
-      animation: glowBan 1.5s infinite alternate; /* إضاءة لعلامة الحظر */
-    }
-
-    @keyframes glowApple {
-      0% {
-        box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
-      }
-      100% {
-        box-shadow: 0 0 30px rgba(255, 69, 0, 1);
-      }
-    }
-
-    @keyframes glowBan {
-      0% {
-        box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-      }
-      100% {
-        box-shadow: 0 0 30px rgba(255, 0, 0, 1);
-      }
-    }
-
-    /* زر ابدأ */
-    button {
-      padding: 10px 20px; /* تقليل الحشو */
-      background-color: #00ffcc;
-      color: #1e3c72;
-      border: none;
-      border-radius: 10px;
-      font-size: 1.2rem; /* تصغير حجم الخط */
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    button:hover {
-      transform: scale(1.1); /* تكبير عند التحويم */
+    .cell:hover {
+      transform: scale(1.1);
       box-shadow: 0 0 25px rgba(0, 255, 204, 0.8);
     }
 
-    .info {
-      font-size: 0.9rem; /* تصغير حجم الخط */
-      margin-top: 10px;
+    .cell.apple { color: #ff4500; }
+    .cell.ban { color: red; }
+
+    button {
+      padding: 12px 25px;
+      background-color: #00ffcc;
+      color: black;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin: 10px;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(0, 255, 204, 0.8);
     }
   </style>
 </head>
 <body>
-  <div class="promo">
-   <span style="color: #00ffcc;"></span>
-  </div>
-
-  <h1>لعبة Apple of Fortune</h1>
-
+  <h1>Apple of Fortune🍏</h1>
   <div class="container">
-    <!-- الأعمدة الجانبية -->
-    <div class="labels" id="labels">
-      <!-- سيتم إنشاء النصوص ديناميكيًا -->
-    </div>
-
-    <!-- الشبكة -->
-    <div class="grid" id="grid">
-      <!-- الخانات سيتم إنشاؤها ديناميكيًا -->
-    </div>
+    <div class="grid" id="grid"></div>
+    <button onclick="startGame()">ابدأ اللعبة</button>
+    <button onclick="location.reload()">إعادة اللعب 🔄</button>
   </div>
-
-  <button onclick="startGame()">ابدأ</button>
-  <p class="info" id="info">يجب عليك اختيار مكان التفاحة في خلال 60 ثنيه فقط، لأنها ستتغير.</p>
 
   <script>
     const grid = document.getElementById('grid');
-    const labels = document.getElementById('labels');
-    const info = document.getElementById('info');
-    const rows = 5; // عدد الصفوف
-    const cols = 5; // عدد الأعمدة
-    const multipliers = ['×1.5', '×2', '×2.5', '×3', '×5']; // مضاعفات الصفوف
-    let timer;
+    const rows = 1;
+    const cols = 5;
 
-    // إنشاء الشبكة الفارغة والمضاعفات
     function createGrid() {
-      // إنشاء النصوص الجانبية
-      labels.innerHTML = '';
-      multipliers.reverse().forEach((multiplier) => {
-        const label = document.createElement('div');
-        label.className = 'label';
-        label.textContent = multiplier;
-        labels.appendChild(label);
-      });
-
-      // إنشاء الشبكة
       grid.innerHTML = '';
       for (let i = 0; i < rows * cols; i++) {
         const cell = document.createElement('div');
         cell.className = 'cell';
-        cell.textContent = ''; // تبدأ الخانة فارغة
         grid.appendChild(cell);
       }
     }
 
-    // تشغيل اللعبة
     function startGame() {
-      // إعادة تعيين الشبكة
       const cells = document.querySelectorAll('.cell');
       cells.forEach(cell => {
         cell.textContent = '';
-        cell.classList.remove('apple', 'ban'); // إزالة التأثيرات السابقة
+        cell.classList.remove('apple', 'ban');
       });
 
-      // تعبئة الشبكة صفًا صفًا من الأسفل إلى الأعلى
       for (let row = rows - 1; row >= 0; row--) {
-        // اختيار موقع عشوائي لـ "🚫" في الصف
         const randomCol = Math.floor(Math.random() * cols);
-
         for (let col = 0; col < cols; col++) {
-          const index = row * cols + col; // حساب موقع الخانة
+          const index = row * cols + col;
           if (col === randomCol) {
             cells[index].textContent = '🚫';
-            cells[index].classList.add('ban'); // إضافة تأثير لعلامة الحظر
+            cells[index].classList.add('ban');
           } else {
             cells[index].textContent = '🍎';
-            cells[index].classList.add('apple'); // إضافة تأثير للتفاحة
+            cells[index].classList.add('apple');
           }
         }
       }
-
-      // بدء المؤقت
-      if (timer) clearTimeout(timer);
-      timer = setTimeout(() => {
-        info.textContent = 'انتهى الوقت! الشبكة ستتغير الآن.';
-        setTimeout(startGame, 2000); // إعادة تشغيل اللعبة بعد انتهاء الوقت
-      }, 60000); // 60 ثوانٍ
     }
 
-    // إنشاء الشبكة عند تحميل الصفحة
     createGrid();
   </script>
 </body>
